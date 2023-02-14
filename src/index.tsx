@@ -4,12 +4,25 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import NavBar from './component/NavBar';
+import Header from './component/Header';
+import TopicNav from './component/TopicNav'
+import SideBar from './component/SideBar';
+import Footer from './component/Footer';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <NavBar />
+      <Header />
+      <TopicNav />
+      <div className="container mx-auto flex flex-wrap py-6">
+      <App />
+        <SideBar />
+      </div>
+      <Footer />
   </React.StrictMode>
 );
 
