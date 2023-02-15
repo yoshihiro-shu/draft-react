@@ -19,7 +19,9 @@ root.render(
       <Header />
       <TopicNav />
       <div className="container mx-auto flex flex-wrap py-6">
-      <App />
+        <div className="App">
+        <App />
+        </div>
         <SideBar />
       </div>
       <Footer />
