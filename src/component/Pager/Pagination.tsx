@@ -16,7 +16,7 @@ function Pagination({ pager }: Props){
   const isPrevPage: boolean = 1 < pager.currentPage
   const isNextPage: boolean = nextPage < pager.lastPage
 
-  const pagerRange: number[] = Array.from({length: displayPagerRange}, (_, n) => startPage+n)
+  let pagerRange: number[] = Array.from({length: displayPagerRange}, (_, n) => ( startPage+n ))
 
   return (
     <div className="flex items-center py-8">
