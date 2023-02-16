@@ -1,29 +1,21 @@
 import React, {useEffect, useState} from 'react';
 
-import ArticleBox from '../component/ArticleBox';
+import ArticleBox from '../../component/ArticleBox';
+import Pagination from '../../component/Pagination'
 
-import Article from '../types/article';
-import Pager from '../types/pager';
+import Article from '../../types/article';
+import Pager from '../../types/pager';
 
-type TopPageResponse = {
-  status: number
-  data: {
-    articles: Article[],
-    pager: Pager,
-  }
-}
+const GetNewArticles: string = "http://localhost/new?page=1";
 
-const GetTopPage: string = "http://localhost/top"
-
-
-const TopPage: React.FC = () => {
+const NewArticles: React.FC = () => {
   const [error, setError] = useState<any>(null);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [articles, setArticles] = useState<Article[]>([]);
   const [pager, setPager] = useState<Pager>();
 
   useEffect(() => {
-    fetch(GetTopPage)
+    fetch(GetNewArticles)
       .then(res => res.json())
       .then(
         (result) => {
@@ -38,13 +30,6 @@ const TopPage: React.FC = () => {
       )
   }, [])
 
-  // TODO refactor
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <section className="w-full md:w-2/3 flex flex-col items-center px-3">
       {articles.map(article => (
@@ -54,8 +39,9 @@ const TopPage: React.FC = () => {
         />
       ))
       }
-    </section>
-  );
+    <Pagination />
+  </section>
+  )
 }
 
-export default TopPage;
+export default NewArticles;
