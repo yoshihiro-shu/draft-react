@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 
 import ArticleBox from '../../component/ArticleBox';
-import Pagination from '../../component/Pagination'
+import Pagination from '../../component/Pager/Pagination'
 
 import Article from '../../types/article';
 import Pager from '../../types/pager';
@@ -15,8 +15,7 @@ const NewArticles: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [pager, setPager] = useState<Pager>({"currentPage": 0, "lastPage": 0});
 
-  const params = useParams()
-  const page = params["page"] as string
+  const page = useParams()["page"] as string
 
   useEffect(() => {
     fetch(getNewArticlesApi(page))
