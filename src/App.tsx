@@ -1,22 +1,30 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import './App.css';
 
+import Layout from './component/Layout';
 import TopPage from './pages/TopPage';
+import NewArticles from './pages/NewArticles';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      { index: true, element: <TopPage /> },
+      {
+        path: "new",
+        element: <NewArticles />,
+      },
+    ],
+  },
+]);
 
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<TopPage />}>
-          {/* <Route index element={<Home />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} /> */}
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <RouterProvider router={router} />
   );
 }
 
