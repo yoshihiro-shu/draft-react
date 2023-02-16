@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <TopPage /> },
       {
-        path: "new",
+        path: "new/:page",
         element: <NewArticles />,
       },
     ],

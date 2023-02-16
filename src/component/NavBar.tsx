@@ -18,7 +18,7 @@ function NavBar() {
                   </Link>
                 </li>
                 <li>
-                  <Link className="hover:text-gray-200 hover:underline px-4" to="New">
+                  <Link className="hover:text-gray-200 hover:underline px-4" to="new/1">
                     Latest
                   </Link>
                 </li>

@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
 
 import ArticleBox from '../../component/ArticleBox';
 import Pagination from '../../component/Pagination'
@@ -6,16 +7,19 @@ import Pagination from '../../component/Pagination'
 import Article from '../../types/article';
 import Pager from '../../types/pager';
 
-const GetNewArticles: string = "http://localhost/new?page=1";
+import getNewArticlesApi from '../../api/newArticles';
 
 const NewArticles: React.FC = () => {
   const [error, setError] = useState<any>(null);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [articles, setArticles] = useState<Article[]>([]);
-  const [pager, setPager] = useState<Pager>();
+  const [pager, setPager] = useState<Pager>({"currentPage": 0, "lastPage": 0});
+
+  const params = useParams()
+  const page = params["page"] as string
 
   useEffect(() => {
-    fetch(GetNewArticles)
+    fetch(getNewArticlesApi(page))
       .then(res => res.json())
       .then(
         (result) => {
@@ -39,7 +43,9 @@ const NewArticles: React.FC = () => {
         />
       ))
       }
-    <Pagination />
+    <Pagination
+      pager={pager}
+    />
   </section>
   )
 }
