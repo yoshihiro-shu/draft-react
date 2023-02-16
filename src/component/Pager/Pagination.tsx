@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-
 import CurrentPager from "./CurrentPager";
 import NormalPager from "./NormalPager";
+import PrevPager from "./PrevPager";
+import NextPager from "./NextPager";
 
 import Pager from "../../types/pager";
 
@@ -20,12 +20,13 @@ function Pagination({ pager }: Props){
 
   return (
     <div className="flex items-center py-8">
-      {isPrevPage && <Link to={prevPage.toString()} className="h-10 w-10 font-semibold text-gray-800 hover:text-gray-900 text-sm flex items-center justify-center ml-3">Prev <i className="fas fa-arrow-right ml-2" /></Link>}
+      {isPrevPage && <PrevPager page={prevPage} />}
+      {/* TODO fix */}
       {pagerRange.map(pr => (pr === pager.currentPage)
         ? <CurrentPager key={pr} page={pr}/>
         : <NormalPager key={pr} page={pr} />)
       }
-      {isNextPage && <Link to={nextPage.toString()} className="h-10 w-10 font-semibold text-gray-800 hover:text-gray-900 text-sm flex items-center justify-center ml-3">Next <i className="fas fa-arrow-right ml-2" /></Link>}
+      {isNextPage && <NextPager page={nextPage} />}
     </div>
   )
 }
