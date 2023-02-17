@@ -1,6 +1,5 @@
 const getArticleDetailApi = (id: string):string => {
-  return "http://localhost" + "/articles" + "/" + id
-  // return process.env.BASE_URL + "new" + "?page=" + page
+  return process.env.REACT_APP_BASE_URL + "/articles" + "/" + id
 }
 
 export default getArticleDetailApi;

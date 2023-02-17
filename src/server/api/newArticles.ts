@@ -1,6 +1,6 @@
 const getNewArticlesApi = (page: string):string => {
-  return "http://localhost" + "/new" + "/" + page
-  // return process.env.BASE_URL + "new" + "?page=" + page
+  console.log("process.env.REACT_APP_BASE_URL", process.env.REACT_APP_BASE_URL)
+  return process.env.REACT_APP_BASE_URL + "/new" + "/" + page
 }
 
 export default getNewArticlesApi;
