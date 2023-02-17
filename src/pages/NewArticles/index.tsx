@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 import ArticleBox from '../../component/ArticleBox';
 import Pagination from '../../component/Pager/Pagination'
 
-import Article from '../../types/article';
-import Pager from '../../types/pager';
+import Article from '../../server/types/article';
+import Pager from '../../server/types/pager';
 
-import getNewArticlesApi from '../../api/newArticles';
+import getNewArticlesApi from '../../server/api/newArticles';
 
 const NewArticles: React.FC = () => {
   const [error, setError] = useState<any>(null);

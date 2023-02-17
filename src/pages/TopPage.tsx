@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 
 import ArticleBox from '../component/ArticleBox';
 
-import Article from '../types/article';
-import Pager from '../types/pager';
+import Article from '../server/types/article';
+import Pager from '../server/types/pager';
 
 type TopPageResponse = {
   status: number

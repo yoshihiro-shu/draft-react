@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import Article from '../types/article'
+import Article from '../server/types/article'
 
 type Props = { article: Article }
 

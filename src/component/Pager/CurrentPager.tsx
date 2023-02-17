@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { useBasePath } from "../../utils/router";
+import { useBasePath } from "../../server/utils/router";
 
 const currentPagerCss: string = "h-10 w-10 bg-blue-800 hover:bg-blue-600 font-semibold text-white text-sm flex items-center justify-center"
 

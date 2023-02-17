@@ -1,6 +1,6 @@
 import { Link,  } from "react-router-dom";
 
-import { useBasePath } from "../../utils/router";
+import { useBasePath } from "../../server/utils/router";
 
 type Props = {page: number}
 

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { useBasePath } from "../../utils/router";
+import { useBasePath } from "../../server/utils/router";
 
 const pagerCss: string = "h-10 w-10 font-semibold text-gray-800 hover:bg-blue-600 hover:text-white text-sm flex items-center justify-center"
 
