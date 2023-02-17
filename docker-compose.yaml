@@ -8,9 +8,7 @@ services:
       - 3000:3000
     volumes:
       - .:/app
-    environment:
-      - HOST=0.0.0.0
-      - port=3000
-      - REACT_APP_BASE_URL=http://localhost
+    env_file:
+      - .env
     tty: true
     working_dir: /app
