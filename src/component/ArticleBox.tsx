@@ -4,6 +4,8 @@ import Article from '../server/types/article'
 
 type Props = { article: Article }
 
+const displayArticleContent: number = 50
+
 function ArticleBox({ article }: Props) {
     const articleDetailPath: string = "articles/" + article.id.toString()
 
@@ -19,8 +21,8 @@ function ArticleBox({ article }: Props) {
             By <Link to="/" className="font-semibold hover:text-gray-800">{ article.user.name }</Link>
             , Published on <>{ article.createdAt }</>
           </p>
-          <Link to="/" className="pb-6">{ article.content }</Link>
-          <Link to="/" className="uppercase text-gray-800 hover:text-black">Continue Reading <i className="fas fa-arrow-right" /></Link>
+          <Link to="/" className="pb-6">{ article.content.slice(0, displayArticleContent) }</Link>
+          <a className="uppercase text-gray-800 hover:text-black">Continue Reading <i className="fas fa-arrow-right"></i></a>
         </div>
       </article>
     )
