@@ -5,6 +5,8 @@ import ArticleBox from '../component/ArticleBox';
 import Article from '../server/types/article';
 import Pager from '../server/types/pager';
 
+import getTopPageApi from '../server/api/topPage';
+
 type TopPageResponse = {
   status: number
   data: {
@@ -13,9 +15,6 @@ type TopPageResponse = {
   }
 }
 
-const GetTopPage: string = "http://localhost/top"
-
-
 const TopPage: React.FC = () => {
   const [error, setError] = useState<any>(null);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
@@ -23,7 +22,7 @@ const TopPage: React.FC = () => {
   const [pager, setPager] = useState<Pager>();
 
   useEffect(() => {
-    fetch(GetTopPage)
+    fetch(getTopPageApi())
       .then(res => res.json())
       .then(
         (result) => {
