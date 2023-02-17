@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, generatePath } from "react-router-dom";
 
 import Article from '../server/types/article'
 
@@ -7,7 +7,7 @@ type Props = { article: Article }
 const displayArticleContent: number = 50
 
 function ArticleBox({ article }: Props) {
-    const articleDetailPath: string = "articles/" + article.id.toString()
+    const articleDetailPath: string = generatePath("/articles/:id", {id: article.id.toString() })
 
     return (
       <article className="flex flex-col shadow my-4">
