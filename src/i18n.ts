@@ -8,17 +8,21 @@ const resources = {
   en: {
     translation: {
       "title": "Tech Blog en",
+      "description": "Lorem Ipsum Dolor Sit Amet",
       "home": "HOME",
       "about": "ABOUT",
-      "latestArticles": "Latest"
+      "latestArticles": "Latest",
+      "copyright": "© MYBLOG.COM",
     }
   },
   ja: {
     translation: {
       "title": "Tech Blog ja",
+      "description": "Lorem Ipsum Dolor Sit Amet",
       "home": "HOME",
       "about": "ABOUT",
-      "latestArticles": "新着記事"
+      "latestArticles": "新着記事",
+      "copyright": "© MYBLOG.COM",
     }
   }
 };
