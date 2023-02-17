@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 function NavBar() {
+  const { t, i18n } = useTranslation();
     return (
       <>
         <nav className="w-full py-4 bg-blue-800 shadow">
@@ -9,17 +11,17 @@ function NavBar() {
               <ul className="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
                 <li>
                   <Link className="hover:text-gray-200 hover:underline px-4" to="/">
-                    Home
+                    {t('home')}
                   </Link>
                 </li>
                 <li>
                   <Link className="hover:text-gray-200 hover:underline px-4" to="/">
-                    About
+                    {t('about')}
                   </Link>
                 </li>
                 <li>
                   <Link className="hover:text-gray-200 hover:underline px-4" to="new/1">
-                    Latest
+                    {t('latestArticles')}
                   </Link>
                 </li>
               </ul>

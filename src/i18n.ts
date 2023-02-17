@@ -8,11 +8,17 @@ const resources = {
   en: {
     translation: {
       "title": "Tech Blog en",
+      "home": "HOME",
+      "about": "ABOUT",
+      "latestArticles": "Latest"
     }
   },
   ja: {
     translation: {
       "title": "Tech Blog ja",
+      "home": "HOME",
+      "about": "ABOUT",
+      "latestArticles": "新着記事"
     }
   }
 };
