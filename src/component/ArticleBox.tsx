@@ -5,14 +5,16 @@ import Article from '../server/types/article'
 type Props = { article: Article }
 
 function ArticleBox({ article }: Props) {
+    const articleDetailPath: string = "articles/" + article.id.toString()
+
     return (
       <article className="flex flex-col shadow my-4">
-        <Link to="/" className="hover:opacity-75">
+        <Link to={articleDetailPath} className="hover:opacity-75">
           <img src={ article.thumbnailUrl } />
         </Link>
         <div className="bg-white flex flex-col justify-start p-6">
           <Link to="/" className="text-blue-700 text-sm font-bold uppercase pb-4">{ article.category.name }</Link>
-          <Link to="/" className="text-3xl font-bold hover:text-gray-700 pb-4">{ article.title }</Link>
+          <Link to={articleDetailPath} className="text-3xl font-bold hover:text-gray-700 pb-4">{ article.title }</Link>
           <p className="text-sm pb-3">
             By <Link to="/" className="font-semibold hover:text-gray-800">{ article.user.name }</Link>
             , Published on <>{ article.createdAt }</>
