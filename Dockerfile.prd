@@ -1,0 +1,22 @@
+FROM node:18.14-alpine as builder
+
+WORKDIR /app
+
+COPY package*.json .
+
+RUN npm ci
+
+COPY . .
+
+ENTRYPOINT  ["npm", "run", "build"]
+
+
+FROM node:18.14-alpine
+
+RUN npm install -g serve
+
+WORKDIR /app
+
+COPY --from=builder /app .
+
+ENTRYPOINT [ "serve", "-s", "build" ]

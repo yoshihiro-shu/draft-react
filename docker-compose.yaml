@@ -3,6 +3,7 @@ services:
   draft-front:
     build:
       context: .
+      # dockerfile: ./Dockerfile.prd
       dockerfile: ./Dockerfile.dev
     ports:
       - 3000:3000
