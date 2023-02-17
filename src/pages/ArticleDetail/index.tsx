@@ -22,12 +22,14 @@ const AritcleDetail: React.FC = () => {
           setError(error);
         }
       )
-  }, [])
+  }, [id])
+
+  if (error) { return <div>Error: {error.message}</div>; };
 
   return (
     <article className="flex flex-col shadow my-4">
       <Link to="/" className="hover:opacity-75">
-        <img src={ article?.thumbnailUrl } />
+        <img src={ article?.thumbnailUrl } alt={article?.title}/>
       </Link>
       <div className="bg-white flex flex-col justify-start p-6">
         <Link to="/" className="text-blue-700 text-sm font-bold uppercase pb-4">{ article?.category.name }</Link>
