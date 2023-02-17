@@ -31,12 +31,12 @@ const AritcleDetail: React.FC = () => {
       </Link>
       <div className="bg-white flex flex-col justify-start p-6">
         <Link to="/" className="text-blue-700 text-sm font-bold uppercase pb-4">{ article?.category.name }</Link>
-        <Link to="/" className="text-3xl font-bold hover:text-gray-700 pb-4">{ article?.title }</Link>
+        <p className="text-3xl font-bold hover:text-gray-700 pb-4">{ article?.title }</p>
         <p className="text-sm pb-3">
           By <Link to="/" className="font-semibold hover:text-gray-800">{ article?.user.name }</Link>
           , Published on <>{ article?.createdAt }</>
         </p>
-        <Link to="/" className="pb-6">{ article?.content }</Link>
+        <p className="pb-6">{ article?.content }</p>
       </div>
     </article>
   )
