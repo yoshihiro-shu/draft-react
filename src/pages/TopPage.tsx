@@ -6,6 +6,7 @@ import Article from '../server/types/article';
 import Pager from '../server/types/pager';
 
 import getTopPageApi from '../server/api/topPage';
+import apiClient from '../server/client';
 
 type TopPageResponse = {
   status: number
@@ -19,22 +20,18 @@ const TopPage: React.FC = () => {
   const [error, setError] = useState<any>(null);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [articles, setArticles] = useState<Article[]>([]);
-  const [pager, setPager] = useState<Pager>();
 
   useEffect(() => {
-    fetch(getTopPageApi())
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setArticles(result.data.articles);
-          setPager(result.data.pager);
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      )
+   (async () => {
+    try {
+      const res = await apiClient.Get<TopPageResponse>(getTopPageApi());
+      setIsLoaded(true);
+      setArticles(res.data.articles);
+    } catch (err) {
+      setError(err)
+      console.error(err);
+    }
+    })();
   }, [])
 
   // TODO refactor
