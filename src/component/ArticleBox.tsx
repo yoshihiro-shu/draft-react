@@ -22,7 +22,7 @@ function ArticleBox({ article }: Props) {
             , Published on <>{ article.createdAt }</>
           </p>
           <p className="pb-6">{ article.content.slice(0, displayArticleContent) }</p>
-          <a className="uppercase text-gray-800 hover:text-black">Continue Reading <i className="fas fa-arrow-right"></i></a>
+          <p className="uppercase text-gray-800 hover:text-black">Continue Reading <i className="fas fa-arrow-right"></i></p>
         </div>
       </article>
     )

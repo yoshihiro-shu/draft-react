@@ -33,6 +33,13 @@ const NewArticles: React.FC = () => {
       )
   }, [page])
 
+    // TODO refactor
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    }
+
   return (
     <section className="w-full md:w-2/3 flex flex-col items-center px-3">
       {articles.map(article => (
