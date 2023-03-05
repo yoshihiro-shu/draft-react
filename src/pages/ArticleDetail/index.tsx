@@ -3,26 +3,31 @@ import { useParams, Link } from 'react-router-dom';
 
 import Article from '../../server/types/article';
 
+import apiClient from '../../server/client';
 import getArticleDetailApi from '../../server/api/articleDetail';
 
+type ArticleDetailesponse = {
+  status: number
+  data: Article
+}
 
 const AritcleDetail: React.FC = () => {
   const [error, setError] = useState<any>(null);
-  const [article, setArticles] = useState<Article>();
+  const [article, setArticle] = useState<Article>();
   const id = useParams()["id"] as string
 
   useEffect(() => {
-    fetch(getArticleDetailApi(id))
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setArticles(result.data);
-        },
-        (error) => {
-          setError(error);
-        }
-      )
-  }, [id])
+    (async () => {
+     try {
+       const res = await apiClient.Get<ArticleDetailesponse>(getArticleDetailApi(id));
+       console.log(res)
+       setArticle(res.data);
+     } catch (err) {
+       setError(err)
+       console.error(err);
+     }
+     })();
+   }, [id])
 
   if (error) { return <div>Error: {error.message}</div>; };
 
