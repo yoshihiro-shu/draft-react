@@ -1,5 +1,3 @@
-type RequestBody = { [key: string]: any }
-
 class ApiClient {
   backendAPI: string
 
@@ -18,7 +16,7 @@ class ApiClient {
       })
   }
 
-  public Post<T>(api: string, data: RequestBody): Promise<T> {
+  public Post<T>(api: string, data: { [key: string]: any }): Promise<T> {
     const endpoint: string = this.backendAPI + api
     return fetch(endpoint, {
       method: 'POST',
