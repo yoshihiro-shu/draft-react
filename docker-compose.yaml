@@ -14,3 +14,10 @@ services:
       - .env
     tty: true
     working_dir: /app
+    networks:
+      - draft-frontend-network
+
+networks:
+  draft-frontend-network:
+    driver: bridge
+    external: true
