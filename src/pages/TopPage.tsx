@@ -7,14 +7,11 @@ import Pager from '../server/types/pager';
 
 import getTopPageApi from '../server/api/topPage';
 import apiClient from '../server/client';
-import APIResponse from '../server/client/types';
 
 type TopPageData = {
   articles: Article[],
   pager: Pager,
 }
-
-type TopPageResponse = APIResponse<TopPageData>
 
 const TopPage: React.FC = () => {
   const [error, setError] = useState<any>(null);
@@ -24,7 +21,7 @@ const TopPage: React.FC = () => {
   useEffect(() => {
    (async () => {
     try {
-      const res: TopPageResponse = await apiClient.Get<TopPageResponse>(getTopPageApi());
+      const res = await apiClient.Get<TopPageData>(getTopPageApi());
       setIsLoaded(true);
       setArticles(res.data.articles);
     } catch (err) {

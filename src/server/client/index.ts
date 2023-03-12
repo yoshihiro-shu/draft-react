@@ -1,3 +1,5 @@
+import APIResponse from "./types";
+
 class ApiClient {
   backendAPI: string
 
@@ -5,18 +7,18 @@ class ApiClient {
     this.backendAPI = backendAPI;
   }
 
-  public async Get<T>(api: string): Promise<T> {
+  public async Get<T>(api: string): Promise<APIResponse<T>> {
     const endpoint: string = this.backendAPI + api
     return await fetch(endpoint)
       .then(res => {
         if (!res.ok) {
           throw new Error(res.statusText)
         }
-        return res.json() as Promise<T>
+        return res.json() as Promise<APIResponse<T>>
       })
   }
 
-  public async Post<T>(api: string, data: { [key: string]: any }): Promise<T> {
+  public async Post<T>(api: string, data: { [key: string]: any }): Promise<APIResponse<T>> {
     const endpoint: string = this.backendAPI + api
     return fetch(endpoint, {
       method: 'POST',
@@ -31,7 +33,7 @@ class ApiClient {
       if (!res.ok) {
         throw new Error(res.statusText)
       }
-      return res.json() as Promise<T>
+      return res.json() as Promise<APIResponse<T>>
     })
   }
 }

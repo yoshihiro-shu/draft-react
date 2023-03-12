@@ -6,11 +6,6 @@ import Article from '../../server/types/article';
 import apiClient from '../../server/client';
 import getArticleDetailApi from '../../server/api/articleDetail';
 
-type ArticleDetailesponse = {
-  status: number
-  data: Article
-}
-
 const AritcleDetail: React.FC = () => {
   const [error, setError] = useState<any>(null);
   const [article, setArticle] = useState<Article>();
@@ -19,8 +14,7 @@ const AritcleDetail: React.FC = () => {
   useEffect(() => {
     (async () => {
      try {
-       const res = await apiClient.Get<ArticleDetailesponse>(getArticleDetailApi(id));
-       console.log(res)
+       const res = await apiClient.Get<Article>(getArticleDetailApi(id));
        setArticle(res.data);
      } catch (err) {
        setError(err)
