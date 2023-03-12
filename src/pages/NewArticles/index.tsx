@@ -7,6 +7,7 @@ import Pagination from '../../component/Pager/Pagination'
 import Article from '../../server/types/article';
 import Pager from '../../server/types/pager';
 
+import apiClient from '../../server/client';
 import getNewArticlesApi from '../../server/api/newArticles';
 
 const NewArticles: React.FC = () => {
@@ -18,20 +19,25 @@ const NewArticles: React.FC = () => {
   const page = useParams()["page"] as string
 
   useEffect(() => {
-    fetch(getNewArticlesApi(page))
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setArticles(result.data.articles);
-          setPager(result.data.pager);
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      )
-  }, [page])
+    (async () => {
+     try {
+        const res = await apiClient.Get<any>(getNewArticlesApi(page));
+        setIsLoaded(true);
+        setArticles(res.data.articles);
+        setPager(res.data.pager);
+     } catch (err) {
+       setError(err)
+       console.error(err);
+     }
+     })();
+   }, [page])
+
+    // TODO refactor
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    }
 
   return (
     <section className="w-full md:w-2/3 flex flex-col items-center px-3">

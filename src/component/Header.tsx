@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 
 function Header() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
     return (
       <header className="w-full container mx-auto">
         <div className="flex flex-col items-center py-12">

@@ -5,6 +5,7 @@ services:
       context: .
       # dockerfile: ./Dockerfile.prd
       dockerfile: ./Dockerfile.dev
+    # image: yoshi429/draft-react:v-0.0.1
     ports:
       - 3000:3000
     volumes:
@@ -13,3 +14,10 @@ services:
       - .env
     tty: true
     working_dir: /app
+    networks:
+      - draft-frontend-network
+
+networks:
+  draft-frontend-network:
+    driver: bridge
+    external: true
