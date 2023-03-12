@@ -16,12 +16,14 @@ class ApiClient {
       })
   }
 
-  public Post<T>(api: string, data: { [key: string]: any }): Promise<T> {
+  public async Post<T>(api: string, data: { [key: string]: any }): Promise<T> {
     const endpoint: string = this.backendAPI + api
     return fetch(endpoint, {
       method: 'POST',
+      mode: 'cors',
       headers: {
-        'content-type': 'application/json;charset=UTF-8',
+        'Accept': 'application/json;charset=utf-8',
+        'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify(data),
     })
