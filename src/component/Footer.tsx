@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 
 function Footer() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
       <footer className="w-full border-t bg-white pb-12">
       <div
