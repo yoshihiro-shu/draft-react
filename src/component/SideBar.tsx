@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 
+import LoginForm from "./Login";
+
 function SideBar() {
     return (
         <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
           <div className="w-full bg-white shadow flex flex-col my-4 p-6">
-            <p className="text-xl font-semibold pb-5">
+            {/* <p className="text-xl font-semibold pb-5">
               About Us
             </p>
             <p className="pb-2">
@@ -12,7 +14,8 @@ function SideBar() {
             </p>
             <Link to="/login" className="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
               Login
-            </Link>
+            </Link> */}
+            <LoginForm />
           </div>
 
           <div className="w-full bg-white shadow flex flex-col my-4 p-6">

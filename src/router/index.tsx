@@ -4,7 +4,6 @@ import Layout from '../component/Layout';
 import TopPage from '../pages/TopPage';
 import NewArticles from '../pages/NewArticles';
 import AritcleDetail from '../pages/ArticleDetail';
-import LoginForm from '../pages/Login'
 
 const router = createBrowserRouter([
   {
@@ -20,10 +19,6 @@ const router = createBrowserRouter([
         path: "articles/:id",
         element: <AritcleDetail />,
       },
-      {
-        path: "login",
-        element: <LoginForm />
-      }
     ],
   },
 ]);
