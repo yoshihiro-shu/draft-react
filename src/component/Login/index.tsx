@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import { useSetRecoilState } from "recoil";
+import { useSetRecoilState, useRecoilValue } from "recoil";
 import loginApi from '../../server/api/auth';
 import apiClient from '../../server/client';
+import { authTokens } from '../../server/types/auth';
 
 import { authState } from '../../recoil/authentication/atom';
+import { authSelector } from '../../recoil/authentication/selector';
 
-type LoginData = {
-  access_token: string
-  refresh_token: string
-}
+type LoginData = authTokens
 
 const LoginForm: React.FC = () => {
   const [email, setEmailName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const setAuthTokens = useSetRecoilState(authState);
+  const isAuthneticated: boolean = useRecoilValue(authSelector)
 
   const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmailName(e.target.value)
@@ -35,6 +35,7 @@ const LoginForm: React.FC = () => {
         "access_token": res.data.access_token,
         "refresh_token": res.data.refresh_token,
       })
+      console.log("isAuthneticated", isAuthneticated)
     } catch (err) {
       // setError(err)
       console.error(err);
