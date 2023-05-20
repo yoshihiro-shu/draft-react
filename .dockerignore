@@ -6,3 +6,7 @@ Dockerfile
 
 # production
 /build
+
+# story book
+.storybook
+src/stories
