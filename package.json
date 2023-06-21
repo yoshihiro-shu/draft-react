@@ -60,7 +60,7 @@
     "@storybook/preset-create-react-app": "^7.0.12",
     "@storybook/react": "^7.0.12",
     "@storybook/react-webpack5": "^7.0.12",
-    "@storybook/testing-library": "^0.0.14-next.2",
+    "@storybook/testing-library": "^0.2.0",
     "@types/js-cookie": "^3.0.3",
     "babel-jest": "^29.5.0",
     "babel-plugin-named-exports-order": "^0.0.2",
