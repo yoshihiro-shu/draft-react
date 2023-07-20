@@ -1,4 +1,4 @@
-FROM node:18.14-alpine as builder
+FROM node:18.17-alpine as builder
 
 WORKDIR /app
 
@@ -11,7 +11,7 @@ COPY . .
 ENTRYPOINT  ["npm", "run", "build"]
 
 
-FROM node:18.14-alpine
+FROM node:18.17-alpine
 
 RUN npm install -g serve
 
